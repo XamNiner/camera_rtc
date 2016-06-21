@@ -14,4 +14,9 @@ angular.module('cameraRtcApp')
       'AngularJS',
       'Karma'
     ];
+    this.ttItems = [
+        'Item 1',
+        'Item 2',
+        'Item 3'
+    ];
   });

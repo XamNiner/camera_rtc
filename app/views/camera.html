@@ -1,0 +1,23 @@
+<!--<div ng-app="cameraRtcApp" ng-controller="camCtrl"><-->
+<select data-ng-model="selectedDoc" ng-options="x.name for x in docList"></select>
+
+<h1>You selected: {{selectedDoc.name}}</h1>
+<p>His ID is: {{selectedDoc.id}}</p>
+<p>Busy? {{selectedDoc.busy}}</p>
+
+<input type="button" value="Connect" ng-click="goRoom(selectedDoc.id" />
+    <br />
+    <br />
+    <span ng-bind="message"></span>
+
+<div class="alert alert-error ng-scope" ng-show="camError" style="">
+    <span>Camera could not be started! Give access or try a different browser.</span>
+</div>
+
+<webcam channel= "channel"
+        on-streaming= "onSuccess()"
+        on-error= "onError(err)"
+        on-stream= "onStream(stream)"
+        placeholder="'images/ajax_loader_gray_350.gif'"></webcam>
+<!--</div>-->
+

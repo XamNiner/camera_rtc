@@ -10,7 +10,9 @@
  */
 angular
   .module('cameraRtcApp', [
-    'ngRoute'
+    'ngResource',
+    'ngRoute',
+    'webcam'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -24,6 +26,16 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
+      .when('/camera', {
+        templateUrl: 'views/camera.html',
+        controller: 'CamCtrl',
+        controllerAs: 'cam'
+      })
+    .when('/room', {
+        templateUrl: 'views/room.html',
+        controller: 'RommCtrl',
+        controllerAs: 'room'
+    })    
       .otherwise({
         redirectTo: '/'
       });
