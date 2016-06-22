@@ -12,11 +12,11 @@ const INDEX = path.join(__dirname, '/dist/');
 
 var server = express();
 
-server.use(gzippo.staticGzip('"" + __dirname + "/dist"'));
+server.use(gzippo.staticGzip("" + __dirname + "/dist"));
 server.listen(PORT, () => console.log('Listening on ${ PORT }'));
   //.use((req, res) => res.sendFile(INDEX) )
-    .use(express.static(__dirname + '/../dist/'))
-    .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+   // .use(express.static(__dirname + '/../dist/'))
+    //.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
 const io = socketIO(server);
 
