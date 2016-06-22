@@ -43,6 +43,7 @@
   },
   "dependencies": {
     "express": "^4.14.0",
+    "gzippo": "^0.2.0",
     "node-uuid": "^1.4.7",
     "socket.io": "^1.4.6"
   }

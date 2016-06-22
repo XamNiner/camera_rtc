@@ -4,12 +4,16 @@ const express = require('express');
 const socketIO = require('socket.io');
 const path = require('path');
 
+var gzippo = require('gzippo');
 var expressApp = express();
 
 const PORT = process.env.PORT || 3000;
 const INDEX = path.join(__dirname, '/dist/');
 
-const server = express()
+var server = express();
+
+server.use(gzippo.staticGzip('"" + __dirname + "/dist"'));
+server.listen(PORT, () => console.log('Listening on ${ PORT }'));
   //.use((req, res) => res.sendFile(INDEX) )
     .use(express.static(__dirname + '/../dist/'))
     .listen(PORT, () => console.log(`Listening on ${ PORT }`));
