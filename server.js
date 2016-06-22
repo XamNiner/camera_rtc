@@ -10,7 +10,8 @@ const PORT = process.env.PORT || 3000;
 const INDEX = path.join(__dirname, '/dist/');
 
 const server = express()
-  .use((req, res) => res.sendFile(INDEX) )
+  //.use((req, res) => res.sendFile(INDEX) )
+    .use(express.static(__dirname + '/dist/'));
   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
 const io = socketIO(server);
