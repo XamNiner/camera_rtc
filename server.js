@@ -4,8 +4,10 @@ const express = require('express');
 const socketIO = require('socket.io');
 const path = require('path');
 
+var expressApp = express();
+
 const PORT = process.env.PORT || 3000;
-const INDEX = path.join(__dirname, '/app/index.html');
+const INDEX = path.join(__dirname, '/dist/');
 
 const server = express()
   .use((req, res) => res.sendFile(INDEX) )
