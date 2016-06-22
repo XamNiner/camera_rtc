@@ -1,31 +1,17 @@
 'use strict';
 
-const express = require('express');
-const socketIO = require('socket.io');
-const path = require('path');
+var express = require("express");
+var path = require("path");
+var socketio = require("socket.io");
+var http = require("http");
 
-var gzippo = require('gzippo');
-var expressApp = express();
+//server utilizing express
+var app = express();
+//set the main directory
+app.use(express.static(__dirname + "/dist"));
 
-const PORT = process.env.PORT || 3000;
-const INDEX = path.join(__dirname, '/dist/');
-
-var server = express();
-
-server.use(gzippo.staticGzip("" + __dirname + "/dist"));
-server.listen(PORT, () => console.log('Listening on ${ PORT }'));
-  //.use((req, res) => res.sendFile(INDEX) )
-   // .use(express.static(__dirname + '/../dist/'))
-    //.listen(PORT, () => console.log(`Listening on ${ PORT }`));
-
-const io = socketIO(server);
-
-io.on('connection', (socket) => {
-  console.log('Client connected');
-  socket.on('disconnect', () => console.log('Client disconnected'));
-});
-
-setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
-
-
-//expressApp.use(express.static(__dirname + '/../public/dist/'));
+//initialize the server
+var server = app.listen(process.env.PORT || 3000, function() {
+    var port = server.address().port;
+    console.log("App is running on the port: ", port);
+})
